@@ -46,7 +46,10 @@ operación seleccionada.
 # ___________________________________________________
 # 
 # archivo_taxis= 'archivoprueba.csv'
-archivo_taxis='taxi-trips-wrvz-psew-subset-small.csv'
+archivo_taxis='taxi-trips-wrvz-psew-subset-small.csv' #archivo small
+# archivo_taxis='taxi-trips-wrvz-psew-subset-medium.csv' #archivo mediano
+# archivo_taxis='taxi-trips-wrvz-psew-subset-large.csv' #archivo grande
+
 
 
 

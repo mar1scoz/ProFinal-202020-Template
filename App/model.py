@@ -165,7 +165,6 @@ def TaxisPorCompania(analyzer):
     taxisXCompania=om.newMap(omaptype='RBT', comparefunction=compareIds)
     total_taxis=0
     nombres= om.keySet(analyzer['companias'])
-    # print(nombres)
     iter=it.newIterator(nombres)
     while it.hasNext(iter):
         cada_compania=it.next(iter)
@@ -177,7 +176,8 @@ def TaxisPorCompania(analyzer):
                 num_taxis=m.size(taxis)
                 total_taxis+=num_taxis
                 om.put(taxisXCompania, num_taxis, cada_compania)
-    
+                # print(om.valueSet(taxisXCompania))
+                # print(om.keySet(taxisXCompania))
 
     
     return (taxisXCompania)
@@ -212,8 +212,10 @@ def RankingTaxis(analyzer, topM):
     # print(taxisPorCompania)
     RankingFinal=lt.newList(datastructure='SINGLE_LINKED', cmpfunction=None)
     rangoRanking=0
+    
 
     taxisPorCompania=TaxisPorCompania(analyzer)
+    # print(taxisPorCompania)
     while rangoRanking<topM:
         if taxisPorCompania is not None:
             MayorValor=om.maxKey(taxisPorCompania)
@@ -221,8 +223,7 @@ def RankingTaxis(analyzer, topM):
             lt.addLast(RankingFinal, nombre_compania)
             if om.contains(taxisPorCompania, MayorValor):
                 om.remove(taxisPorCompania, MayorValor)
-        
-        rangoRanking+=1
+                rangoRanking+=1
    
     return RankingFinal
 
@@ -239,10 +240,8 @@ def RankingServicios(analyzer, topN):
             nombre_compania=om.get(serviciosPorCompania, MayorValor)
             lt.addLast(RankingFinal, nombre_compania)
             if om.contains(serviciosPorCompania, MayorValor):
-                om.remove(serviciosPorCompania, MayorValor)
-        
-                
-        rangoRanking+=1
+                om.remove(serviciosPorCompania, MayorValor) 
+                rangoRanking+=1
    
     return RankingFinal
 
