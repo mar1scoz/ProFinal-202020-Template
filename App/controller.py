@@ -39,6 +39,13 @@ recae sobre el controlador.
 # ___________________________________________________
 #  Inicializacion del catalogo
 # ___________________________________________________
+def init():
+    """
+    Llama la funcion de inicializacion  del modelo.
+    """
+    # catalog es utilizado para interactuar con el modelo
+    analyzer = model.newAnalyzer()
+    return analyzer
 
 
 # ___________________________________________________
@@ -46,6 +53,80 @@ recae sobre el controlador.
 #  de datos en los modelos
 # ___________________________________________________
 
+
+def loadData(analyzer, archivo_taxis):
+    # t1_start = process_time()
+    """
+    Carga los datos de los archivos CSV en el modelo
+    """
+    taxisfile = cf.data_dir + archivo_taxis
+    input_file = csv.DictReader(open(taxisfile, encoding="utf-8-sig"),
+                                delimiter=",")
+    for carrera in input_file:
+        model.addCarrera(analyzer, carrera)
+        # model.addTaxi(analyzer, carrera)
+        model.addCompanias(analyzer, carrera)
+        
+    # t1_stop = process_time() #tiempo final
+    # print("Tiempo de ejecución ",t1_stop-t1_start," segundos") 
+    return analyzer
+
+
+
 # ___________________________________________________
 #  Funciones para consultas
 # ___________________________________________________
+
+def TotalCarreras(analyzer):
+    """
+    Numero de crimenes leidos
+    """
+    return model.TotalCarreras(analyzer)
+
+def Totaltaxis(analyzer):
+    """
+    Numero de crimenes leidos
+    """
+    return model.Totaltaxis(analyzer)
+
+def alturaCompanias(analyzer):
+    """
+    Altura del indice (arbol)
+    """
+    return model.alturaCompanias(analyzer)
+
+
+def TotalCompanias(analyzer):
+    """
+    Numero de nodos en el arbol
+    """
+    return model.TotalCompanias(analyzer)
+
+
+def minKey(analyzer):
+    """
+    La menor llave del arbol
+    """
+    return model.minKey(analyzer)
+
+
+def maxKey(analyzer):
+    """
+    La mayor llave del arbol
+    """
+    return model.maxKey(analyzer)
+
+def CompaniasConTaxi(analyzer):
+    return model.CompaniasConTaxi(analyzer)
+
+def TaxisPorCompania(analyzer):
+    return model.TaxisPorCompania(analyzer)
+
+def ServiciosPorCompania(analyzer):
+    return model.ServiciosPorCompania(analyzer)
+
+def RankingTaxis(analyzer, topM):
+    return model.RankingTaxis(analyzer, topM)
+
+def RankingServicios(analyzer, topN):
+    return model.RankingServicios(analyzer, topN)
