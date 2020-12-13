@@ -70,7 +70,7 @@ def CargarDatos(): #CARGAR INFORMACION
     total_companias= controller.TotalCompanias(cont)
     print("\nNUMERO DE TAXIS:"+ str(total_taxis))
     print('NUMERO DE SERVICIOS:'+ str(total_servicios))
-    print("NUMERO DE COMPAÑIAS: "+ str(total_companias))
+    print("NUMERO DE COMPAÑIAS: "+ str(total_companias-1))
     # print(controller.ServiciosPorCompania(cont))
     # print(cont)
 

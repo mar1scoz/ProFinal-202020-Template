@@ -66,12 +66,10 @@ def newAnalyzer():
     """
 
     analyzer= {'carreras': None,
-                'taxis':None,
                 'companias': None
                 }
     analyzer['carreras']= lt.newList('SINGLE_LINKED', compareIds)
-    analyzer['taxis']= lt.newList('SINGLE_LINKED', compareCompany)
-    analyzer['companias'] = om.newMap(omaptype='BST', comparefunction=compareCompany)
+    analyzer['companias'] = om.newMap(omaptype='RBT', comparefunction=compareCompany)
 
     return analyzer
 
